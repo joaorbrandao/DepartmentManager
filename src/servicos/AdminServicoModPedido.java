@@ -1,0 +1,203 @@
+package servicos;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+/**
+ * Servlet implementation class AdminServicoModPedido
+ */
+@WebServlet("/AdminServicoModPedido")
+public class AdminServicoModPedido extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    public AdminServicoModPedido() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    private int util_id = 0;
+    private String util_nome = null;
+    private int mod_id = 0;
+    private String mod_nome = null;
+	
+    public int getUtil_id() {
+		return util_id;
+	}
+	public void setUtil_id(int util_id) {
+		this.util_id = util_id;
+	}
+	public String getUtil_nome() {
+		return util_nome;
+	}
+	public void setUtil_nome(String util_nome) {
+		this.util_nome = util_nome;
+	}
+	public int getMod_id() {
+		return mod_id;
+	}
+	public void setMod_id(int mod_id) {
+		this.mod_id = mod_id;
+	}
+	public String getMod_nome() {
+		return mod_nome;
+	}
+	public void setMod_nome(String mod_nome) {
+		this.mod_nome = mod_nome;
+	}
+	
+	
+	private boolean aceitaInscricao(boolean aceitaTrue_removeFalse ,JSONArray array){
+    	try{
+    		JSONObject obj = (JSONObject)array.get(0);
+    		setUtil_nome((String) obj.get("name"));
+    		setMod_nome((String) obj.get("value"));
+    		
+    		//Obter util_id com base no util_nome
+    		String cmd = "SELECT * FROM utilizadores WHERE util_nome=\""+getUtil_nome()+"\";";
+			String bd = "jdbc:mysql://localhost/desportivobd?user=root&password=root";
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn = DriverManager.getConnection(bd);
+			Statement s = conn.createStatement();
+			s.executeQuery(cmd);
+			ResultSet rs = s.getResultSet();
+			
+			while(rs.next()){
+				setUtil_id(Integer.parseInt(rs.getString("util_id")));
+			}
+			rs.close();
+			s.close ();
+			conn.close();
+			
+    		//Obter mod_id com base no mod_nome
+			String cmd1 = "SELECT * FROM modalidades WHERE mod_nome=\""+getMod_nome()+"\";";
+			String bd1 = "jdbc:mysql://localhost/desportivobd?user=root&password=root";
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Connection conn1 = DriverManager.getConnection(bd1);
+			Statement s1 = conn1.createStatement();
+			s1.executeQuery(cmd1);
+			ResultSet rs1 = s1.getResultSet();
+			
+			while(rs1.next()){
+				setMod_id(Integer.parseInt(rs1.getString("mod_id")));
+			}
+			rs1.close();
+			s1.close ();
+			conn1.close();
+			
+    		//Fazer Update à inscrição
+			boolean flag = false;
+			if(aceitaTrue_removeFalse == true){
+				//Aceita inscrição
+				String cmd2 = "UPDATE utilizadores_modalidades SET estado=2 WHERE util_id="+getUtil_id()+" and mod_id="+getMod_id()+";";
+				String bd2 = "jdbc:mysql://localhost/desportivobd?user=root&password=root";
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				Connection conn2 = DriverManager.getConnection(bd2);
+				Statement s2 = conn2.createStatement();
+				int res2 = s2.executeUpdate(cmd2);
+				
+				s2.close ();
+				conn2.close();
+				
+				flag = true;
+			}else{
+				//Recusa inscrição
+				String cmd2 = "UPDATE utilizadores_modalidades SET estado=0 WHERE util_id="+getUtil_id()+" and mod_id="+getMod_id()+";";
+				String bd2 = "jdbc:mysql://localhost/desportivobd?user=root&password=root";
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				Connection conn2 = DriverManager.getConnection(bd2);
+				Statement s2 = conn2.createStatement();
+				int res2 = s2.executeUpdate(cmd2);
+				
+				s2.close ();
+				conn2.close();
+				
+				flag = true;
+			}
+    		
+			
+			return flag;
+			
+		} catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+    }
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String form_mod = "["+request.getParameter("form_mod")+"]";
+		String botao = request.getParameter("botao");
+		
+		if(form_mod.equals("[false]")){
+			//Nenhum pedido de inscrição
+			PrintWriter out = response.getWriter();  
+			response.setContentType("text/html");  
+			out.println("<script type=\"text/javascript\">");  
+			out.println("alert('Nenhuma inscrição pendente!');");
+			out.println("location='administracaoA.html';");
+			out.println("</script>");
+		}else{
+			if(botao.equals("Aceitar")){
+				//Aceitar inscrição
+				Object obj = JSONValue.parse(form_mod);
+				JSONArray array = (JSONArray)obj;
+				boolean verificaInscricao = aceitaInscricao(true ,array);
+				if(verificaInscricao == false){
+					//Erro a aceitar inscricao
+					PrintWriter out = response.getWriter();  
+					response.setContentType("text/html");  
+					out.println("<script type=\"text/javascript\">");  
+					out.println("alert('Erro: Erro ao aceitar inscrição!');");
+					out.println("location='administracaoA.html';");
+					out.println("</script>");
+				}else{
+					//Inscricao aceite
+					PrintWriter out = response.getWriter();  
+					response.setContentType("text/html");  
+					out.println("<script type=\"text/javascript\">");  
+					out.println("alert('"+getUtil_nome()+" aceite na modalidade de "+getMod_nome()+"!');");
+					out.println("location='administracaoA.html';");
+					out.println("</script>");
+				}
+			}else{
+				//Recusar inscrição
+				Object obj = JSONValue.parse(form_mod);
+				JSONArray array = (JSONArray)obj;
+				boolean verificaInscricao = aceitaInscricao(false ,array);
+				if(verificaInscricao == false){
+					//Erro a recusar inscricao
+					PrintWriter out = response.getWriter();  
+					response.setContentType("text/html");  
+					out.println("<script type=\"text/javascript\">");  
+					out.println("alert('Erro: Erro ao recusar inscrição!');");
+					out.println("location='administracaoA.html';");
+					out.println("</script>");
+				}else{
+					//Inscricao recusada
+					PrintWriter out = response.getWriter();  
+					response.setContentType("text/html");  
+					out.println("<script type=\"text/javascript\">");  
+					out.println("alert('"+getUtil_nome()+" recusado na modalidade de "+getMod_nome()+"!');");
+					out.println("location='administracaoA.html';");
+					out.println("</script>");
+				}
+			}
+		}
+	}
+
+}

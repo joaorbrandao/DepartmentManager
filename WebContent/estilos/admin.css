@@ -1,0 +1,93 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+#estiloInfo{
+	font-weight: bold;
+}
+
+/*---------- Barra de Navegação - START ----------*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	color:white;
+    background-color: #b14618;
+    border-radius: 5px;
+    padding: 6px;/*14px 16px;*/
+}
+/*---------- Barra de Navegação - END ----------*/
+
+/*---------- MAPA - START ----------*/
+.mapa{
+	text-align: center;
+}
+/*---------- MAPA - END ----------*/
+
+/*---------- DIVISÕES - START ----------*/
+div {
+    float: center;
+    /*background-color:grey;*/
+}
+#up{
+	width:100%;
+}
+#down{
+	width:100%;
+}
+/*margin: top right bottom left*/
+#left {
+	float:left;
+    margin: 20px 1px 5px 0px;
+    width: 48%;/*220px;*/
+}
+#right {
+	float:right;
+    margin: 20px 0px 5px 1px;
+    width: 48%;/*220px;*/
+}
+/*---------- DIVISÕES - END ----------*/
+
+/*---------- INSCRIÇÕES - START ----------*/
+input[type=submit]{
+	width:48%;
+	padding: 6px;
+	color:black;
+    background-color: #c0c0c0;
+    border-radius: 5px;
+    border:0px;
+}
+input[type=submit]:hover{
+	width:48%;
+	padding: 6px;
+	color:white;
+    background-color: #b14618;
+    border-radius: 5px;
+    border:0px;
+}
+select{
+	width:100%;
+    border: 1px solid #b14618; 
+    border-radius: 5px;
+    padding: 6px;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}
+/*---------- INSCRIÇÕES - END ----------*/

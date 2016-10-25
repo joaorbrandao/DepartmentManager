@@ -1,0 +1,70 @@
+<!--
+aeISEP - Departamento Desportivo
+
+Gestão de Departamento Desportivo - Modalidades, Atletas e Provas
+(Consulta, Registo, Administração)
+
+Desenvolvido por: João Brandão (1120484)
+Contribuições:
+-->
+<!DOCTYPE html>
+<html lang="pt-PT">
+	<head>
+		<meta charset="utf-8">
+		<title>Home - Perfil do Atleta</title>
+		<link rel="stylesheet" type="text/css" href="./estilos/admin.css">
+		<!--<script type="text/javascript" src="./scripts/verificaCookies.js"></script>-->
+		<script type="text/javascript" src="./scripts/scripts.js"></script>
+	</head>
+	<body onpageshow="verificaCookies();getModalidades();getProvas();getUtilizadores();getPedidosMod();getPedidosProvas();">
+		<ul>
+		  <li><a href="homeA.html">Home</a></li>
+		  <li><a href="administracaoA.html">Administração</a></li>
+		  <ul style="float:right;list-style-type:none;">
+			  <li><a href="contactosA.html">Contactos</a></li>
+			  <li><a id="logout" href="login.html">Logout</a></li>
+		  </ul>
+		</ul>
+		<div id="up">
+			<div id="left">
+				<label id="estiloInfo">Pedidos de Inscrição em Modalidades </label><br>
+				<form action="AdminServicoModPedido" method="post">
+					<select id="displayInfoMod" name="form_mod"></select><br>
+					<input type="submit" name="botao" value="Aceitar">
+					<input type="submit" name="botao" value="Recusar">
+				</form>
+			</div>
+			<div id="right">
+				<label id="estiloInfo">Pedidos de Inscrição em Provas </label><br>
+				<form action="AdminServicoProvaPedido" method="post">
+					<select id="displayInfoProva" name="form_prova"></select><br>
+					<input type="submit" name="botao" value="Aceitar">
+					<input type="submit" name="botao" value="Recusar">
+				</form>
+			</div>
+		</div><br>
+		<div id="down">
+			<div id="left">
+				<label id="estiloInfo">Inscrever/Remover Atletas em Modalidades </label><br>
+				<form action="AdminServicoModalidades" method="post">
+					<select id="displayUtil" name="form_util"></select><br>
+					<select id="displayModalidades" name="form_mod"></select><br>
+					<input type="submit" name="botao" value="Inscrever">
+					<input type="submit" name="botao" value="Remover">
+				</form>
+			</div>
+			<div id="right">
+				<label id="estiloInfo">Inscrever/Remover Atletas em Provas </label><br>
+				<form action="AdminServicoProvas" method="post">
+					<select id="displayUtil1" name="form_util"></select><br>
+					<select id="displayProvas" name="form_prova"></select><br>
+					<input type="submit" name="botao" value="Inscrever">
+					<input type="submit" name="botao" value="Remover">
+				</form>
+			</div>
+		</div>
+	</body>
+	<!--<footer>
+		<small>Desenvolvido por João Brandão</small>
+	</footer>-->
+</html>

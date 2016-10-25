@@ -1,0 +1,149 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+#estiloInfo{
+	font-weight: bold;
+}
+
+/*---------- Barra de Navegação - START ----------*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	color:white;
+    background-color: #b14618;
+    border-radius: 5px;
+    padding: 6px;/*14px 16px;*/
+}
+/*---------- Barra de Navegação - END ----------*/
+
+/*---------- MAPA - START ----------*/
+.mapa{
+	text-align: center;
+}
+/*---------- MAPA - END ----------*/
+
+/*---------- DIVISÕES - START ----------*/
+div {
+    height: 100%;
+    float: left;
+}
+/*margin: top right bottom left*/
+#left {
+	float:left;
+    margin: 20px 0px 5px 0px;
+    width: 20%;/*220px;*/
+}
+#center {
+	float:center;
+    margin: 20px 10px 5px 10px;
+    width: 55%;/*calc(100% - 460px);*/
+}
+#right {
+	float:right;
+    margin: 20px 0px 5px 0px;
+    width: 20%;/*220px;*/
+}
+/*---------- DIVISÕES - END ----------*/
+
+/*---------- TABELA PROVAS - START ----------*/
+#tabelaProvas{
+	border-collapse: collapse;
+    width: 100%;
+    border:1px solid #b14618;
+    border-radius: 5px;
+}
+tr, td:nth-child(even) {
+    text-align: left;
+    vertical-align: center;
+    background-color: #f2f2f2;
+    border-bottom:#000000;
+}
+thead{
+	text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+    border-top:px solid #b14618;
+}
+tfoot{
+	text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+    border-bottom:1px solid #b14618;
+}
+/*---------- TABELA PROVAS - END ----------*/
+
+/*---------- TABELA MODALIDADES - START ----------*/
+#tabelaMod{
+	border-collapse: collapse;
+    width: 100%;
+    border:1px solid #b14618;
+    border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+}
+thead{
+	text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+    border-top:1px solid #b14618;
+}
+tfoot{
+	text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+    border-bottom:1px solid #b14618;
+}
+
+tr, td:nth-child(even) {
+    text-align: left;
+    vertical-align: center;
+    background-color: #f2f2f2;
+}
+
+/*---------- TABELA MODALIDADES - END ----------*/
+
+/*---------- INSCRIÇÕES - START ----------*/
+input[type=submit]{
+	width:100px;
+	padding: 6px;
+	color:black;
+    background-color: #c0c0c0;
+    border-radius: 5px;
+    border:0px;
+}
+input[type=submit]:hover{
+	width:100px;
+	padding: 6px;
+	color:white;
+    background-color: #b14618;
+    border-radius: 5px;
+    border:0px;
+}
+select{
+	width:265px;
+    border: 1px solid #b14618; 
+    border-radius: 5px;
+    padding: 6px;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}
+/*---------- INSCRIÇÕES - END ----------*/
