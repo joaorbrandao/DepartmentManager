@@ -1,0 +1,74 @@
+<!--
+aeISEP - Departamento Desportivo
+
+Gestão de Departamento Desportivo - Modalidades, Atletas e Provas
+(Consulta, Registo, Administração)
+
+Desenvolvido por: João Brandão (1120484)
+Contribuições:
+-->
+<!DOCTYPE html>
+<html lang="pt-PT">
+	<head>
+		<meta charset="utf-8">
+		<title>aeISEP - Novo Registo</title>
+		<link rel="stylesheet" type="text/css" href="./estilos/registo.css">
+		<!--<script src="./scripts/modalidades.js"></script>-->
+		<script type="text/javascript" src="./scripts/scripts.js"></script>
+	</head>
+	<body onload="getModalidades()">
+		<p>
+			<h1>Bem-vindo!</h1>
+		</p>
+			<form action="Registo" method="post">
+				<table><!--align não é suportado por HTML5, utilizar CSS!-->
+					<tr>
+						<td class="col1">E-mail</td>
+						<td class="col2"><input type="text" name="form_email" size="40" value="" placeholder="E-mail"><td>
+					</tr>
+					<tr>
+						<td class="col1">Password</td>
+						<td class="col2"><input type="password" name="form_pass" size="40" value="" placeholder="Password"></td>
+					</tr>
+					<tr>
+						<td class="col1">Nome</td>
+						<td class="col2"><input type="text" name="form_nome" size="40" value="" placeholder="Nome"></td>
+					</tr>
+					<tr>
+						<td class="col1">Data de nascimento</td>
+						<td class="col2"><input type="text" name="form_data_nascimento" size="40" value="" placeholder="dd/mm/aaaa"></td>
+					</tr>
+					<tr>
+						<td class="col1">Sexo</td>
+						<td class="col2">
+							<select name="form_sexo">
+								<option value="M">Masculino</option>
+							  	<option value="F">Feminino</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="col1">Número de Telefone</td> 
+						<td class="col2"><input type="text" name="form_telefone" size="40" value="" placeholder="Telefone"></td>
+					</tr>
+					<tr>
+						<td class="col1">Número de identificação</td> 
+						<td class="col2"><input type="text" name="form_cartao_cidadao" size="40" value="" placeholder="Cartão de Cidadão"></td>
+					</tr>
+					<tr>
+						<td class="col1">Modalidades</td>
+						<td class="col2">
+							<select id="displayModalidades" name="form_mod"></select>
+						</td>
+					</tr>
+				</table>
+				<p><input type="submit" name="regist_button" value="Registar"></p>
+			</form>
+		<p>
+			<small><a href="login.html">Voltar</a></small>
+		</p>
+	</body>
+	<!--<footer>
+		<small>Desenvolvido por João Brandão</small>
+	</footer>-->
+</html>

@@ -1,0 +1,48 @@
+/*---------- Pagina ----------*/
+html {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*---------- Inputs - START ----------*/
+input[type=text]{
+	width:250px;
+    border: 1px solid #b14618; 
+    border-radius: 5px;
+    padding: 6px;
+    background-color: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}
+input[type=password]{
+	width:250px;
+    border: 1px solid #b14618; 
+    border-radius: 5px;
+    padding: 6px;
+    background-color: rgba(255,255,255,0.5);
+}
+input[type=submit]{
+	width:100px;
+	padding: 6px;
+	color:black;
+    background-color: #c0c0c0;
+    border-radius: 5px;
+    border:0px;
+}
+input[type=submit]:hover{
+	width:100px;
+	padding: 6px;
+	color:white;
+    background-color: #b14618;
+    border-radius: 5px;
+    border:0px;
+}
+/*---------- Inputs - END ----------*/
+
+/*---------- Links - START ----------*/
+a{
+	color:black;
+}
+a:hover{
+	color:#b14618;
+}
+/*---------- Links - END ----------*/

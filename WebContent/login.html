@@ -1,0 +1,41 @@
+<!--
+aeISEP - Departamento Desportivo
+
+Gestão de Departamento Desportivo - Modalidades, Atletas e Provas
+(Consulta, Registo, Administração)
+
+Desenvolvido por: João Brandão (1120484)
+Contribuições:
+-->
+<!DOCTYPE html>
+<html lang="pt-PT">
+	<head>
+		<meta charset="utf-8">
+		<title>aeISEP - Gestão de Atletas</title>
+		<link rel="stylesheet" type="text/css" href="./estilos/login.css">
+		<!--<script type="text/javascript" src="./scripts/destroiCookie.js"></script>-->
+		<script type="text/javascript" src="./scripts/scripts.js"></script>
+	</head>
+	<body onload="destroiCookies()">
+		<p>
+			<img src="./imagens/aeisep_logo.jpg" alt="aeISEP" height="200">
+			<p>
+				<h1>Departamento Desportivo</h1>
+				<h4>Gestão de Atletas</h4>
+			</p>
+		</p>
+		<p>
+			<form  action="LoginServlet" method="post">
+				<p><input type="text" name="form_email" size="40" value="" placeholder="E-mail"><br>
+				<input type="password" name="form_pass" size="40" value="" placeholder="Password"></p>
+				<p><input type="submit" name="login_button_op" value="Login"></p>
+			</form>
+		</p>
+		<p>
+			<small><a href="registo.html">Regista-te!</a></small>
+		</p>
+	</body>
+	<!--<footer>
+		<small>Desenvolvido por João Brandão</small>
+	</footer>-->
+</html>
